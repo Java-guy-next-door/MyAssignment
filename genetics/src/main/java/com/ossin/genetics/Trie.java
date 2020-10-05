@@ -7,21 +7,24 @@ import java.util.*;
 @Service
 public class Trie {
     private final Node root;
+    private Node curser;
     private int nodes;
 
     public Trie() {
         root = new Node();
+        curser = root;
         nodes = 1;
     }
 
-    public void add(String value) {
-        Node node = root;
-        for (char c : value.toCharArray()) {
+//    public void add(DnaDataService.DnaCharacter character) {
+    public void add(char character) {
+//        Node node = root;
+//        for (char c : value.toCharArray()) {
 //            BooleanPair charRepresentation = getCharRepresentation(c);
 //            node.children.putIfAbsent(charRepresentation, new Node());
 //            node = node.children.get(charRepresentation);
-            node = createChildIfAbsent(node, c);
-        }
+        curser = createChildIfAbsent(curser, character);
+//        }
     }
 
     private BooleanPair getCharRepresentation(char c) {
@@ -56,16 +59,18 @@ public class Trie {
         return nodes++;
     }
 
-    public boolean exists(String value) {
+    public boolean exists(char[] gene) {
+//    public boolean exists(DnaDataService.DnaCharacter[] gene) {
         Node node = root;
 
-        for (char c : value.toCharArray()) {
+        for (char c : gene) {
+//        for (DnaDataService.DnaCharacter character : gene) {
 //            BooleanPair charRepresentation = getCharRepresentation(c);
 //            if (!node.children.containsKey(charRepresentation)) {
 //                return false;
 //            }
-//            node = node.children.get(charRepresentation);
             node = getChild(node, c);
+//            node = getChild(node, character);
             if (node == null) {
                 return false;
             }
@@ -73,9 +78,10 @@ public class Trie {
         return true;
     }
 
-    private Node createChildIfAbsent(Node node, char c) {
+//    private Node createChildIfAbsent(Node node, DnaDataService.DnaCharacter character) {
+    private Node createChildIfAbsent(Node node, char character) {
         Node result = null;
-        switch (c) {
+        switch (character) {
             case 'A':
                 if (node.childA == null) {
                     node.childA = new Node();
@@ -108,9 +114,10 @@ public class Trie {
         return result;
     }
 
-    private Node getChild(Node node, char c) {
+    private Node getChild(Node node, char character) {
+//    private Node getChild(Node node, DnaDataService.DnaCharacter character) {
         Node result = null;
-        switch (c) {
+        switch (character) {
             case 'A':
                 result = node.childA;
                 break;
@@ -125,6 +132,10 @@ public class Trie {
                 break;
         }
         return result;
+    }
+
+    public void startGeneSquence() {
+        this.curser = root;
     }
 
 //    public int nodes() {
