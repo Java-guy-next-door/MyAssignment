@@ -9,6 +9,7 @@ public class DnaDataService {
     private final DnaSequenceTrie genePool;
     private final char[] PREFIX;
     private int prefixIndex;
+    private int nodes;
 
     @Autowired
     public DnaDataService(@Value("${gene-prefix}") String genePrefix) {
@@ -18,6 +19,7 @@ public class DnaDataService {
             PREFIX[i] = genePrefix.charAt(i);
         }
         prefixIndex = 0;
+        nodes = 0;
     }
 
     public void addCharacter(char dnaCharacter) {
@@ -26,6 +28,7 @@ public class DnaDataService {
             if (prefixIndex == PREFIX.length) {
                 genePool.startGeneSequence();
                 prefixIndex = 0;
+                nodes++;
             }
         } else {
             for (int i = 0; i < prefixIndex; i++) {
@@ -55,5 +58,9 @@ public class DnaDataService {
             geneTail[i - PREFIX.length] = gene[i];
         }
         return genePool.exists(geneTail);
+    }
+
+    public int getNodes() {
+        return nodes;
     }
 }
