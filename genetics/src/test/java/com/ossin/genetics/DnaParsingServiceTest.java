@@ -1,5 +1,6 @@
 package com.ossin.genetics;
 
+import com.ossin.genetics.services.DnaDataService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

@@ -1,5 +1,6 @@
-package com.ossin.genetics;
+package com.ossin.genetics.services;
 
+import com.ossin.genetics.data.DnaSequenceTrie;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;

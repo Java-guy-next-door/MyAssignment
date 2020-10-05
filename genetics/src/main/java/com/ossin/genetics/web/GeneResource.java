@@ -1,5 +1,6 @@
-package com.ossin.genetics;
+package com.ossin.genetics.web;
 
+import com.ossin.genetics.services.DnaDataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;

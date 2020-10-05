@@ -1,4 +1,4 @@
-package com.ossin.genetics;
+package com.ossin.genetics.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -29,7 +29,7 @@ public class DnaParsingService {
         DnaFileReader reader = new DnaFileReader(dnaFileName);
         reader.start();
         addCharactersToDataService(reader);
-        writer.write("# Nodes: " + dataService.getNodes());
+        writer.write("# Nodes in TRIE: " + dataService.getNodes());
     }
     private void addCharactersToDataService(DnaFileReader reader) {
         while (reader.isAlive() || !queue.isEmpty()) {

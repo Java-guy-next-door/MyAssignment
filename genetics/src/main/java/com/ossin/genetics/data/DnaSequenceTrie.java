@@ -1,4 +1,4 @@
-package com.ossin.genetics;
+package com.ossin.genetics.data;
 
 import org.springframework.stereotype.Service;
 
