@@ -3,8 +3,6 @@ package com.ossin.genetics;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static com.ossin.genetics.DnaDataService.DnaCharacter.*;
-
 class DnaParsingServiceTest {
 
     static final String GENE_PREFIX = "AAA";
@@ -12,15 +10,11 @@ class DnaParsingServiceTest {
     @Test
     public void feedCharactersOf1Gene() {
         DnaDataService serviceUnderTest = new DnaDataService(GENE_PREFIX);
-//        DnaDataService.DnaCharacter[] gene = new DnaDataService.DnaCharacter[]{A,A,A,C,G,T};
         char[] gene = new char[]{'A','A','A','C','G','T'};
         for (int i = 0; i < gene.length; i++) {
             serviceUnderTest.addCharacter(gene[i]);
         }
 
-//        DnaDataService.DnaCharacter[] partialGene1 = new DnaDataService.DnaCharacter[]{A,A,A,C};
-//        DnaDataService.DnaCharacter[] partialGene2 = new DnaDataService.DnaCharacter[]{A,A,A,C,G};
-//        DnaDataService.DnaCharacter[] gene2 = new DnaDataService.DnaCharacter[]{A,A,A,C,G,T,A};
         char[] partialGene1 = new char[]{'A','A','A','C'};
         char[] partialGene2 = new char[]{'A','A','A','C','G'};
         char[] gene2 = new char[]{'A','A','A','C','G','T','A'};
@@ -34,8 +28,6 @@ class DnaParsingServiceTest {
     @Test
     public void feedCharactersOf2Genes() {
         DnaDataService serviceUnderTest = new DnaDataService(GENE_PREFIX);
-//        DnaDataService.DnaCharacter[] sequence =
-//                new DnaDataService.DnaCharacter[]{A,A,A,C,G,T,A,A,A,A,A,T};
         char[] sequence =
                 new char[]{'A','A','A','C','G','T','A','A','A','A','A','T'};
         for (int i = 0; i < sequence.length; i++) {
